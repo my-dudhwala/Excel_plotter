@@ -7,6 +7,8 @@ file = 'Piezo_OpAmp.xlsx'
 df = pd.read_excel(file)
 ppg_raw = df.iloc[:, 0].values  # assuming data is in first column
 
+data = df.iloc[:, 0].dropna().reset_index(drop=True)
+
 # 1. Remove DC offset
 ppg_centered = ppg_raw - ppg_raw.mean()
 

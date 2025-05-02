@@ -1,4 +1,13 @@
 from scipy.signal import butter, filtfilt
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the Excel file
+file_path = 'Piezo_OpAmp.xlsx'
+df = pd.read_excel(file_path)
+
+# Assume data is in the first column
+data = df.iloc[:, 0].dropna().reset_index(drop=True)
 
 def butter_lowpass_filter(data, cutoff, fs, order=4):
     nyq = 0.5 * fs
@@ -8,8 +17,8 @@ def butter_lowpass_filter(data, cutoff, fs, order=4):
     return y
 
 # Parameters (adjust as needed)
-fs = 1000  # Sampling frequency in Hz
-cutoff = 10  # Desired cutoff frequency of the filter, in Hz
+fs = 150  # Sampling frequency in Hz
+cutoff = 20  # Desired cutoff frequency of the filter, in Hz
 filtered = butter_lowpass_filter(data, cutoff, fs)
 
 plt.figure(figsize=(10, 5))
