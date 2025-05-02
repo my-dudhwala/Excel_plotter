@@ -11,19 +11,6 @@ float x[3] = {0}, y[3] = {0};
 unsigned long lastSampleTime = 0;
 const unsigned long sampleIntervalMicros = 1000000.0 / SAMPLE_RATE;
 
-// void computeButterworthCoefficients(float cutoff, float fs) {
-//   float PI = 3.14159265;
-//   float ita = 1.0 / tan(PI * cutoff / fs);
-//   float q = sqrt(2.0); // For Butterworth 2nd-order
-
-//   float norm = 1.0 / (1.0 + q * ita + ita * ita);
-//   b0 = norm;
-//   b1 = 2.0 * norm;
-//   b2 = norm;
-//   a1 = 2.0 * (1.0 - ita * ita) * norm;
-//   a2 = (1.0 - q * ita + ita * ita) * norm;
-// }
-
 void computeButterworthCoefficients(float cutoff, float fs) {
   float ita = 1.0 / tan(pi * cutoff / fs);
   float q = sqrt(2.0); // For Butterworth 2nd-order
