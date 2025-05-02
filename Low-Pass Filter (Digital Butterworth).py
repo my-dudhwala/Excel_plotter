@@ -10,7 +10,7 @@ df = pd.read_excel(file_path)
 data = df.iloc[:, 0].dropna().reset_index(drop=True)
 
 def butter_lowpass_filter(data, cutoff, fs, order=4):
-    nyq = 0.4 * fs
+    nyq = 0.5 * fs
     normal_cutoff = cutoff / nyq
     b, a = butter(order, normal_cutoff, btype='low', analog=False)
     y = filtfilt(b, a, data)
